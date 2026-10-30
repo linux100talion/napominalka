@@ -367,3 +367,15 @@ start, nodes. Дерево узлов то же, без времени, check и
 - log/: текстовый лог и журнал блокеров
 Отложено: лог в Documents через MediaStore, база данных, иконка,
 инструкция по прошивкам.
+
+=== РЕПОЗИТОРИЙ И СБОРКА ===
+
+GitHub: https://github.com/linux100talion/napominalka (публичный).
+Реальный конфиг и логи в репозиторий не попадают: .gitignore + pre-commit хук,
+разрешён только config.example.json.
+
+Сборка в GitHub Actions: тесты движка + debug APK при каждом пуше в main.
+APK: https://github.com/linux100talion/napominalka/releases/tag/latest-debug
+Телефон: Motorola, Android 15. minSdk 26 (Android 8+), targetSdk 34.
+Первая сборка: код скомпилировался, 7 тестов упали из-за часового пояса
+сервера (UTC); исправлено, вторая сборка зелёная.
