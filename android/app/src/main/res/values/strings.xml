@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Напоминалка</string>
+
+    <string name="channel_service_name">Служба</string>
+    <string name="channel_service_desc">Тихое уведомление о работе службы</string>
+    <string name="channel_alert_name">Вопросы</string>
+    <string name="channel_alert_desc">Обязательные вопросы по расписанию</string>
+    <string name="channel_wait_name">Ожидание</string>
+    <string name="channel_wait_desc">Процессы в ожидании</string>
+
+    <string name="status_not_configured">Конфиг не выбран</string>
+    <string name="status_config_error">Ошибка конфига</string>
+    <string name="status_running">Работает</string>
+    <string name="status_stopped">Остановлена</string>
+    <string name="status_idle">Не запущена</string>
+
+    <string name="btn_start">Запустить</string>
+    <string name="btn_stop">Остановить вручную</string>
+    <string name="btn_pick_config">Выбрать конфиг</string>
+    <string name="btn_check_config">Проверить конфиг</string>
+    <string name="btn_logs">Логи</string>
+    <string name="btn_yes">Да</string>
+    <string name="btn_no">Нет</string>
+    <string name="btn_ack">Понял</string>
+    <string name="btn_answer">Ответить</string>
+    <string name="btn_share">Поделиться</string>
+
+    <string name="label_processes">Процессы</string>
+    <string name="label_open_processes">Открытые процессы</string>
+    <string name="label_next_step">Следующий шаг: %1$s в %2$s</string>
+    <string name="label_current_step">Текущий шаг: %1$s</string>
+
+    <string name="notif_service_text">Напоминалка работает</string>
+    <string name="notif_stopped_text">Программа остановлена. Откройте для запуска.</string>
+    <string name="notif_wait_text">%1$s: ожидание</string>
+
+    <string name="stop_title_step">Шаг %1$s не решён. Почему?</string>
+    <string name="stop_title_proc">Процесс %1$s не завершён. Почему?</string>
+    <string name="stop_hint">Опишите причину</string>
+    <string name="stop_empty">Причина не может быть пустой</string>
+    <string name="stopped_title">Программа остановлена</string>
+    <string name="stopped_text">Исправьте конфиг и запустите снова.</string>
+
+    <string name="escalate_proc_prefix">Ты не ответил: %1$s</string>
+    <string name="text_empty">Ответ не может быть пустым</string>
+</resources>

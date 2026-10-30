@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "day_start": "07:00",
+  "timeouts": {
+    "repeat_sec": 60,
+    "escalate_min": 5,
+    "close_min": 10
+  },
+  "steps": [
+    {
+      "id": "wake_up",
+      "time": "07:00",
+      "check": "Ты встал?",
+      "forgot": "Ты забыл встать",
+      "on_no": "n1",
+      "nodes": {
+        "n1": {
+          "type": "instruction",
+          "text": "Сядь на кровати. Спусти ноги на пол.",
+          "next": "n2"
+        },
+        "n2": {
+          "type": "yesno",
+          "text": "Встал?",
+          "yes": "done",
+          "no": "n3"
+        },
+        "n3": {
+          "type": "instruction",
+          "text": "Включи свет. Выпей стакан воды.",
+          "next": "n4"
+        },
+        "n4": {
+          "type": "yesno",
+          "text": "Теперь встал?",
+          "yes": "done",
+          "no": "fail"
+        },
+        "done": {
+          "type": "done"
+        },
+        "fail": {
+          "type": "fail",
+          "text": "Не удалось встать. Программа останавливается."
+        }
+      }
+    },
+    {
+      "id": "find_number",
+      "time": "09:00",
+      "check": "Ты номер нашёл?",
+      "forgot": "Ты забыл найти номер",
+      "on_yes": "y1",
+      "on_no": "s1",
+      "nodes": {
+        "y1": {
+          "type": "instruction",
+          "text": "Запиши номер в блокнот на столе.",
+          "next": "y2"
+        },
+        "y2": {
+          "type": "yesno",
+          "text": "Записал?",
+          "yes": "done",
+          "no": "y1"
+        },
+        "s1": {
+          "type": "yesno",
+          "text": "Посмотри в записной книжке. Есть?",
+          "yes": "y1",
+          "no": "s2"
+        },
+        "s2": {
+          "type": "yesno",
+          "text": "Посмотри в истории звонков. Есть?",
+          "yes": "y1",
+          "no": "s3"
+        },
+        "s3": {
+          "type": "choice",
+          "text": "Кто может знать номер?",
+          "options": [
+            {
+              "label": "Х",
+              "next": "s4"
+            },
+            {
+              "label": "Y",
+              "next": "s5"
+            },
+            {
+              "label": "Никто",
+              "next": "fail"
+            }
+          ]
+        },
+        "s4": {
+          "type": "yesno",
+          "text": "Позвони Х. Дал номер?",
+          "yes": "y1",
+          "no": "s5"
+        },
+        "s5": {
+          "type": "yesno",
+          "text": "Позвони Y. Дал номер?",
+          "yes": "y1",
+          "no": "s6"
+        },
+        "s6": {
+          "type": "text",
+          "text": "Где ещё искал? Опиши.",
+          "next": "fail"
+        },
+        "done": {
+          "type": "done"
+        },
+        "fail": {
+          "type": "fail",
+          "text": "Номер не найден. Программа останавливается."
+        }
+      }
+    },
+    {
+      "id": "evening_report",
+      "time": "21:00",
+      "check": "Ты отправил отчёт?",
+      "forgot": "Ты забыл отправить отчёт",
+      "on_no": "r1",
+      "nodes": {
+        "r1": {
+          "type": "instruction",
+          "text": "Открой папку Отчёты. Возьми файл за сегодня.",
+          "next": "r2"
+        },
+        "r2": {
+          "type": "yesno",
+          "text": "Файл есть?",
+          "yes": "r3",
+          "no": "r4"
+        },
+        "r3": {
+          "type": "yesno",
+          "text": "Отправь его. Отправил?",
+          "yes": "done",
+          "no": "fail"
+        },
+        "r4": {
+          "type": "text",
+          "text": "Почему файла нет?",
+          "next": "fail"
+        },
+        "done": {
+          "type": "done"
+        },
+        "fail": {
+          "type": "fail",
+          "text": "Отчёт не отправлен. Программа останавливается."
+        }
+      }
+    },
+    {
+      "id": "night_check",
+      "time": "02:00",
+      "check": "Ты проверил дверь?",
+      "forgot": "Ты забыл проверить дверь",
+      "on_no": "d1",
+      "nodes": {
+        "d1": {
+          "type": "instruction",
+          "text": "Подойди к двери. Проверь замок.",
+          "next": "d2"
+        },
+        "d2": {
+          "type": "yesno",
+          "text": "Закрыто?",
+          "yes": "done",
+          "no": "d3"
+        },
+        "d3": {
+          "type": "instruction",
+          "text": "Закрой на ключ.",
+          "next": "d4"
+        },
+        "d4": {
+          "type": "yesno",
+          "text": "Теперь закрыто?",
+          "yes": "done",
+          "no": "fail"
+        },
+        "done": {
+          "type": "done"
+        },
+        "fail": {
+          "type": "fail",
+          "text": "Дверь не закрыта. Программа останавливается."
+        }
+      }
+    }
+  ],
+  "processes": [
+    {
+      "id": "power_off",
+      "title": "Выключили свет",
+      "start": "p1",
+      "nodes": {
+        "p1": {
+          "type": "yesno",
+          "text": "Время отключения записал?",
+          "yes": "p2",
+          "no": "p1i"
+        },
+        "p1i": {
+          "type": "instruction",
+          "text": "Запиши время отключения в блокнот.",
+          "next": "p1"
+        },
+        "p2": {
+          "type": "yesno",
+          "text": "Чайник выключил?",
+          "yes": "p3",
+          "no": "p2i"
+        },
+        "p2i": {
+          "type": "instruction",
+          "text": "Выключи чайник.",
+          "next": "p2"
+        },
+        "p3": {
+          "type": "yesno",
+          "text": "Холодильник выключил?",
+          "yes": "w",
+          "no": "p3i"
+        },
+        "p3i": {
+          "type": "instruction",
+          "text": "Выключи холодильник.",
+          "next": "p3"
+        },
+        "w": {
+          "type": "wait",
+          "text": "Всё выключено. Ждём, когда включат свет.",
+          "button": "Свет включили",
+          "next": "q1"
+        },
+        "q1": {
+          "type": "yesno",
+          "text": "Время включения записал?",
+          "yes": "q2",
+          "no": "q1i"
+        },
+        "q1i": {
+          "type": "instruction",
+          "text": "Запиши время включения в блокнот.",
+          "next": "q1"
+        },
+        "q2": {
+          "type": "yesno",
+          "text": "Солярку залил?",
+          "yes": "q3",
+          "no": "q2i"
+        },
+        "q2i": {
+          "type": "instruction",
+          "text": "Залей солярку.",
+          "next": "q2"
+        },
+        "q3": {
+          "type": "yesno",
+          "text": "Зажигание выключил?",
+          "yes": "q4",
+          "no": "q3i"
+        },
+        "q3i": {
+          "type": "instruction",
+          "text": "Выключи зажигание.",
+          "next": "q3"
+        },
+        "q4": {
+          "type": "yesno",
+          "text": "Холодильник включил?",
+          "yes": "q5",
+          "no": "q4i"
+        },
+        "q4i": {
+          "type": "instruction",
+          "text": "Включи холодильник.",
+          "next": "q4"
+        },
+        "q5": {
+          "type": "yesno",
+          "text": "Чайник включил?",
+          "yes": "done",
+          "no": "q5i"
+        },
+        "q5i": {
+          "type": "instruction",
+          "text": "Включи чайник.",
+          "next": "q5"
+        },
+        "done": {
+          "type": "done"
+        }
+      }
+    }
+  ]
+}
