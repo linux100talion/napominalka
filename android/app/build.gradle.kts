@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.napominalka"
+    namespace = "com.protocol"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.napominalka"
+        applicationId = "com.protocol"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

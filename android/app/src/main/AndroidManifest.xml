@@ -20,7 +20,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Napominalka"
+        android:theme="@style/Theme.Protocol"
         tools:targetApi="34">
 
         <activity
@@ -42,7 +42,7 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.Napominalka.Step" />
+            android:theme="@style/Theme.Protocol.Step" />
 
         <!-- Экран остановки: причина блокера. -->
         <activity
@@ -53,7 +53,7 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.Napominalka.Step" />
+            android:theme="@style/Theme.Protocol.Step" />
 
         <activity
             android:name=".ui.LogsActivity"
@@ -71,7 +71,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.napominalka.files"
+            android:authorities="com.protocol.files"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

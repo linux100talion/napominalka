@@ -1,9 +1,9 @@
-# Напоминалка. Android-каркас
+# Protocol. Android-каркас
 
 **Реальный конфиг и логи в репозиторий не попадают никогда.** Здесь только
 `../config.example.json` с выдуманными данными. `.gitignore` и локальный
 pre-commit хук блокируют остальные `config*.json`, `*.log` и `blockers*`.
-Реальный конфиг живёт только на телефоне в `Documents/Napominalka/`.
+Реальный конфиг живёт только на телефоне в `Documents/Protocol/`.
 
 Каркас по `../SPEC.md`. Kotlin, minSdk 26, targetSdk 34, без сети.
 
@@ -12,7 +12,7 @@ pre-commit хук блокируют остальные `config*.json`, `*.log` 
 Собирается в GitHub Actions (`.github/workflows/build.yml`): при каждом
 пуше в `main` прогоняются юнит-тесты движка и собирается debug APK.
 Готовый APK лежит в скользящем пре-релизе
-https://github.com/linux100talion/napominalka/releases/tag/latest-debug
+https://github.com/linux100talion/protocol/releases/tag/latest-debug
 На устройстве приложение **ещё не запускалось**.
 
 Что есть:
@@ -30,8 +30,8 @@ https://github.com/linux100talion/napominalka/releases/tag/latest-debug
 
 Что сознательно отложено (TODO в коде):
 
-- Логи пишутся в `Android/data/com.napominalka/files/Napominalka/`, а не в
-  `Documents/Napominalka/`. Перенос через MediaStore.
+- Логи пишутся в `Android/data/com.protocol/files/Protocol/`, а не в
+  `Documents/Protocol/`. Перенос через MediaStore.
 - База данных (SPEC 7.4). Текстовые файлы первичны, база не обязательна.
 - Инструкция для прошивок с убийством фона (Xiaomi, Huawei, Samsung).
 - Иконка приложения: временная, из векторного колокольчика.
@@ -58,7 +58,7 @@ https://github.com/linux100talion/napominalka/releases/tag/latest-debug
 ## Установка на телефон
 
 1. Разрешить установку из неизвестных источников, поставить APK.
-2. Положить `config.json` в `Documents/Napominalka/` (пример:
+2. Положить `config.json` в `Documents/Protocol/` (пример:
    `../config.example.json`).
 3. В приложении: «Выбрать конфиг», «Проверить конфиг», «Запустить».
    При первом запуске приложение по очереди попросит: уведомления, точные

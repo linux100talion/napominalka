@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Napominalka" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Protocol" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">?android:attr/colorBackground</item>
     </style>
 
     <!-- Экран шага: без анимаций, не прозрачный, крупно. -->
-    <style name="Theme.Napominalka.Step" parent="Theme.Napominalka">
+    <style name="Theme.Protocol.Step" parent="Theme.Protocol">
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 </resources>

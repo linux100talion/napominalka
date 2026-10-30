@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Napominalka"
+rootProject.name = "Protocol"
 include(":app")

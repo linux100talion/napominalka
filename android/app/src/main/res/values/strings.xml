@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Напоминалка</string>
+    <string name="app_name">Protocol</string>
 
     <string name="channel_service_name">Служба</string>
     <string name="channel_service_desc">Тихое уведомление о работе службы</string>
@@ -31,7 +31,7 @@
     <string name="label_next_step">Следующий шаг: %1$s в %2$s</string>
     <string name="label_current_step">Текущий шаг: %1$s</string>
 
-    <string name="notif_service_text">Напоминалка работает</string>
+    <string name="notif_service_text">Protocol работает</string>
     <string name="notif_stopped_text">Программа остановлена. Откройте для запуска.</string>
     <string name="notif_wait_text">%1$s: ожидание</string>
 
