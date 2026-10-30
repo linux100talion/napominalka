@@ -5,6 +5,7 @@ import com.napominalka.config.Node
 import com.napominalka.config.Process
 import com.napominalka.config.Step
 import com.napominalka.config.formatHHMM
+import java.time.ZoneId
 
 /** Ответ человека на текущий экран. */
 sealed class Answer {
@@ -49,6 +50,7 @@ class Engine(
     val config: Config,
     val state: EngineState,
     private val listener: EngineListener,
+    private val zone: ZoneId = ZoneId.systemDefault(),
 ) {
     private val t = config.timeouts
 
@@ -57,10 +59,10 @@ class Engine(
     /** SPEC 5.1. */
     fun start(now: Long) {
         state.mode = Mode.RUNNING
-        state.cycleStart = Schedule.cycleStartFor(now, config.dayStartMin)
+        state.cycleStart = Schedule.cycleStartFor(now, config.dayStartMin, zone)
         state.activeStep = null
         listener.log("START")
-        listener.log("CYCLE_START", Schedule.cycleDate(state.cycleStart).toString())
+        listener.log("CYCLE_START", Schedule.cycleDate(state.cycleStart, zone).toString())
         var idx = 0
         while (idx < config.steps.size && dueAt(idx) <= now) {
             listener.log("SKIPPED_RESTART", config.steps[idx].id)
@@ -98,11 +100,11 @@ class Engine(
     private fun rollCycle(now: Long): Boolean {
         var changed = false
         while (state.activeStep == null) {
-            val next = Schedule.nextCycleStart(state.cycleStart, config.dayStartMin)
+            val next = Schedule.nextCycleStart(state.cycleStart, config.dayStartMin, zone)
             if (now < next) break
             state.cycleStart = next
             state.nextStepIndex = 0
-            listener.log("CYCLE_START", Schedule.cycleDate(state.cycleStart).toString())
+            listener.log("CYCLE_START", Schedule.cycleDate(state.cycleStart, zone).toString())
             changed = true
         }
         return changed
@@ -198,7 +200,7 @@ class Engine(
             val run = state.activeStep
             if (run == null) {
                 if (state.nextStepIndex < config.steps.size) times += dueAt(state.nextStepIndex)
-                else times += Schedule.nextCycleStart(state.cycleStart, config.dayStartMin)
+                else times += Schedule.nextCycleStart(state.cycleStart, config.dayStartMin, zone)
             } else if (run.state == RunState.ACTIVE) {
                 times += run.lastAlert + t.repeatMs
                 if (!run.escalated) times += run.t0 + t.escalateMs

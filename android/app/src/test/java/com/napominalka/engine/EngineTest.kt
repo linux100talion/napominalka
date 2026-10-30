@@ -58,7 +58,7 @@ class EngineTest {
         assertTrue(v.errors.joinToString(), v.ok)
         val rec = Rec()
         val st = EngineState()
-        return Triple(Engine(cfg, st, rec), rec, st)
+        return Triple(Engine(cfg, st, rec, zone), rec, st)
     }
 
     @Test
