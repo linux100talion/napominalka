@@ -7,3 +7,13 @@ android/.idea/
 *.iml
 *.apk
 *.keystore
+
+# РЕАЛЬНЫЕ КОНФИГИ И ЛОГИ НИКОГДА НЕ КОММИТЯТСЯ.
+# В репозитории допустим только config.example.json с тестовыми данными.
+config.json
+config.*.json
+!config.example.json
+configs/
+private/
+*.log
+blockers*
